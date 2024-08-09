@@ -1,0 +1,12 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #8B4513; /* SaddleBrown for wood aesthetic */
+  }
+  
