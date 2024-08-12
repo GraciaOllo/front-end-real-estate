@@ -6,8 +6,7 @@ import LandPage from './components/LandPage';
 import Footer from './components/Footer';
 // import Visualisation from './components/3dVisualisation';
 import LoginForm from './components/LoginForm';
-
-
+import Signup from './components/SignupForm';
 
 import './App.css';
 
@@ -20,6 +19,8 @@ const App = () => {
       <Routes>
         {/* <Route path="/3dvisualisation" element={<Visualisation />} /> */}
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/Signup" element={<Signup />} />
+
         <Route path="/" element={<LandPage />} />
       </Routes>
       <Footer/>
