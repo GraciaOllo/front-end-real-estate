@@ -7,10 +7,11 @@
   border-radius: 10px;
   border-color: rgba(128, 128, 128, 0.95);
   position: absolute;
-  top: 20px;
+  top: 100px;
+  
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
-  z-index: 10; /* Ensures form is on top of the image */
+  /* z-index: 10; Ensures form is on top of the image */
 }
 
 .login-form h2 {
@@ -63,29 +64,13 @@
 }
 
 /* Styling for background image (Header component) */
- .form-background {
-  background-image: url(../assets/images/R.jpg); /* Update with your image path */
-  background-size: cover;
-  background-position: center; 
-   filter: blur(7px); /* Blurs the image */
- -webkit-filter: blur(8px); /*  Blurs the image for Safari */ 
-   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1; /*Behind the login form */
-}
-body{
-  /* background-image: url(../assets/images/smallHouse.jpg); */
+ 
+.form-container{
+  background-image: url(../assets/images/home.jpeg);
   background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; 
-  
-  width: 100%;
-  z-index: 1;
-  
-  
+  background-size: cover; 
+  height: 500px;
+  width: 100%; 
 }
 
 /* Styling icons inside buttons */
@@ -110,3 +95,7 @@ body{
 .signup-link a:hover {
   color: white; /* Darker shade on hover */
 }
+@media screen and (max-width: 1000px) {
+  .form-container {
+     max-width: 100%;
+   }}

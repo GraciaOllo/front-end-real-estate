@@ -21,8 +21,8 @@ const Navbar = () => {
         <Link to="/" className="navbar-link">
           <FontAwesomeIcon icon={faHome} /> Home 
         </Link>
-        <Link to="/visualization" className="navbar-link">
-          <FontAwesomeIcon icon={faBuilding} /> Visualization
+        <Link to="/3dVisualisation" className="navbar-link">
+          <FontAwesomeIcon icon={faBuilding} /> Visualisation
         </Link>
         <Link to="/signup" className="navbar-link">
           <FontAwesomeIcon icon={faUser} /> signup

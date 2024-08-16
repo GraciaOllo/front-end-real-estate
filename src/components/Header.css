@@ -72,6 +72,21 @@
   height: auto !important;
   width: auto !important;
 }
+.book {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: rgba(66, 247, 247, 0.961);
+text-decoration: solid;
+text-wrap: boxed;
+  font-weight: 700;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.book:hover {
+  color: #30ed4d;
+  transform: scale(1.1);
+}
  /* Responsive design */
  @media screen and (max-width: 1000px) {
   .container {

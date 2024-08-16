@@ -11,12 +11,14 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Mock login logic
-    
+ 
   };
 
   return (
 
-         <div className="login-form" >
+        <div>
+          <div className='form-container'>
+  <div className="login-form" >
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <label>
@@ -44,6 +46,9 @@ const LoginForm = () => {
     
      
    
+        </div>
+        </div>
+       
    
   );
 };
