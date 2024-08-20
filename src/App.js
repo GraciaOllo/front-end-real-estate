@@ -8,9 +8,11 @@ import Visualisation from './components/3dVisualisation';
 import LoginForm from './components/LoginForm';
 import Signup from './components/SignupForm';
 import Company from './components/About/Company';
-
+import BookingForm from './components/Booking/BookingForm';
+import UserDashboard from './components/Dashboards/userDashboard';
 import './App.css';
 import './Responsive.css';
+
 
 const App = () => {
   return (
@@ -24,6 +26,9 @@ const App = () => {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/About/Company" element={<Company />} />
         <Route path="/" element={<LandPage />} />
+        <Route path="/book_now" element={<BookingForm />} />
+        <Route path="/UserDashboard" element={<UserDashboard />} />
+
       </Routes>
       <Footer/>
       

@@ -61,6 +61,7 @@
 .login-form button:hover {
   background-color: rgb(16, 209, 16); /* Darker shade on hover */
   transition:  0.3s ease;
+  transform: scale(1.1);
 }
 
 /* Styling for background image (Header component) */

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import { FaSignInAlt } from 'react-icons/fa'; // Importing login icon
 
@@ -7,12 +8,19 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Mock login logic
- 
+     // Simple authentication check
+     if (name === 'name' && password === 'password') {
+      navigate('/UserDashboard'); // Redirect to patient dashboard on successful login
+    } else {
+      alert('Invalid credentials');
+    }
   };
+ 
+
 
   return (
 

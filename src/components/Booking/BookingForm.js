@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ApiService from '../../controllers/ApiService';
+import './Booking.css';
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const BookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const booking = await ApiService.createBooking(formData);
+     await ApiService.createBooking(formData);
       alert('Booking successful!');
     } catch (error) {
       console.error('Error creating booking', error);
@@ -24,7 +25,10 @@ const BookingForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className='BookingContainer' >
+     
+<form onSubmit={handleSubmit} className='BookingForm'>
+<h1 className='BookTitle'>Booking Form</h1>
       <input
         type="text"
         name="name"
@@ -50,7 +54,11 @@ const BookingForm = () => {
       />
       <button type="submit">Book Now</button>
     </form>
+ 
+
+    </div>
+       
   );
 };
-
+    
 export default BookingForm;

@@ -1,4 +1,5 @@
 import React from 'react';
+import logo1 from '../../assets/images/logo1.png';
 import './Company.css';
 
 
@@ -8,7 +9,7 @@ const Company =()=>{
             
             <div className="about_us">
                 <div className="img-description">
-                    {/* <image src={logo1}/> */}
+                    <image src={logo1}/>
                     <div className='description'>
                     <p>
                     PIOL is a consultation  cabinet of expertise, in cadastrial affairs,in matter of state properties,public domain and related affairs

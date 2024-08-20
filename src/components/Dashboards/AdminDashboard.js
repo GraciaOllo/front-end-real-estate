@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import ApiService from '../../controllers/ApiService';
 import { Bar, Line } from 'react-chartjs-2';
+import { FaHome, FaBuilding, FaUsers, FaCog } from 'react-icons/fa';
 import './Dashboards.css';
 
 const AdminDashboard = () => {
@@ -29,9 +29,9 @@ const AdminDashboard = () => {
       {
         label: 'Property Prices',
         data: propertyData.map((property) => property.price),
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
+        backgroundColor: 'rgba(139, 69, 19, 0.8)', // SaddleBrown
+        borderColor: '#FFFFFF', // White
+        borderWidth: 2,
       },
     ],
   };
@@ -42,24 +42,49 @@ const AdminDashboard = () => {
       {
         label: 'Bookings Per Day',
         data: bookingData.map((booking) => booking.count),
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-        borderColor: 'rgba(75, 192, 192, 1)',
-        borderWidth: 1,
+        backgroundColor: 'rgba(139, 69, 19, 0.8)', // SaddleBrown
+        borderColor: '#FFFFFF', // White
+        borderWidth: 2,
       },
     ],
   };
 
   return (
     <div className="dashboard-container">
-      <h1>Admin Dashboard</h1>
-      <div className="charts-container">
-        <div className="chart-item">
-          <h3>Property Prices</h3>
-          <Bar data={propertyChartData} />
+      <div className="sidebar-container">
+        <h2>Real Estate Dashboard</h2>
+        <div className="nav-item">
+          <FaHome className="nav-icon" /> Dashboard
         </div>
-        <div className="chart-item">
-          <h3>Bookings Over Time</h3>
-          <Line data={bookingChartData} />
+        <div className="nav-item">
+          <FaBuilding className="nav-icon" /> Properties
+        </div>
+        <div className="nav-item">
+          <FaUsers className="nav-icon" /> Applications
+        </div>
+        <div className="nav-item">
+          <FaCog className="nav-icon" /> Settings
+        </div>
+      </div>
+
+      <div className="content">
+        <div className="header-container">
+          <h1>Dashboard Overview</h1>
+          <div className="user-profile">
+            <img src="user-profile-image-url" alt="User" />
+            <span>Admin</span>
+          </div>
+        </div>
+
+        <div className="charts-container">
+          <div className="chart-item">
+            <h3>Property Prices</h3>
+            <Bar data={propertyChartData} />
+          </div>
+          <div className="chart-item">
+            <h3>Bookings Over Time</h3>
+            <Line data={bookingChartData} />
+          </div>
         </div>
       </div>
     </div>

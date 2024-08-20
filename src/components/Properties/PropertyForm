@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+import ApiService from '../../controllers/ApiService';
+
+const PropertyForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    description: '',
+    location: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const newProperty = await ApiService.createProperty(formData);
+      alert('Property created successfully!');
+    } catch (error) {
+      console.error('Error creating property', error);
+      alert('Failed to create the property.');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+        placeholder="Property Name"
+        required
+      />
+      <input
+        type="number"
+        name="price"
+        value={formData.price}
+        onChange={handleChange}
+        placeholder="Price"
+        required
+      />
+      <textarea
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        placeholder="Description"
+        required
+      />
+      <input
+        type="text"
+        name="location"
+        value={formData.location}
+        onChange={handleChange}
+        placeholder="Location"
+        required
+      />
+      <button type="submit">Create Property</button>
+    </form>
+  );
+};
+
+export default PropertyForm;
