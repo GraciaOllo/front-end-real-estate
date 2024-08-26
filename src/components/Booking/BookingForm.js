@@ -25,39 +25,38 @@ const BookingForm = () => {
   };
 
   return (
-    <div className='BookingContainer' >
-     
-<form onSubmit={handleSubmit} className='BookingForm'>
-<h1 className='BookTitle'>Booking Form</h1>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="Your Name"
-        required
-      />
-      <input
-        type="date"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="propertyId"
-        value={formData.propertyId}
-        onChange={handleChange}
-        placeholder="Property ID"
-        required
-      />
-      <button type="submit">Book Now</button>
-    </form>
- 
-
+    <div className='BookingContainer'>
+      <div  align='center'  > 
+     <form onSubmit={handleSubmit} className='BookingForm'>
+     <h1 className='BookTitle'>Booking Form</h1>
+           <input
+             type="text"
+             name="name"
+             value={formData.name}
+             onChange={handleChange}
+             placeholder="Your Name"
+             required
+           />
+           <input
+             type="date"
+             name="date"
+             value={formData.date}
+             onChange={handleChange}
+             required
+           />
+           <input
+             type="text"
+             name="propertyId"
+             value={formData.propertyId}
+             onChange={handleChange}
+             placeholder="Property ID"
+             required
+           />
+           <button type="submit">Book Now</button>
+         </form>
+         </div>
     </div>
-       
+            
   );
 };
     

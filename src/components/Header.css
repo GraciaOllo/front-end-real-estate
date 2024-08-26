@@ -75,8 +75,8 @@
 .book {
   display: inline-block;
   margin-top: 0.5rem;
-  font-size: 1rem;
-  color: rgba(66, 247, 247, 0.961);
+  font-size: 1.1rem;
+  color: white;
 text-decoration: solid;
 text-wrap: boxed;
   font-weight: 700;
@@ -84,7 +84,7 @@ text-wrap: boxed;
 }
 
 .book:hover {
-  color: #30ed4d;
+  color: #35f532;
   transform: scale(1.1);
 }
  /* Responsive design */
@@ -92,4 +92,12 @@ text-wrap: boxed;
   .container {
      max-width: 100%;
    }
+ }
+ .bokApp{
+  width: 22%;
+  margin-left: 250px;
+  height: 80px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.466);
+  border:solid 3px rgb(228, 228, 38);
  }

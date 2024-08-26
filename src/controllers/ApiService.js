@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8085';
+const BASE_URL = 'http://localhost:8086/api';
 
 const ApiService = {
   // Fetch a list of properties
@@ -28,7 +28,7 @@ const ApiService = {
   // Submit a new property listing
   createProperty: async (propertyData) => {
     try {
-      const response = await axios.post(`${BASE_URL}/properties`, propertyData);
+      const response = await axios.post(`${BASE_URL}/properties/`, propertyData);
       return response.data;
     } catch (error) {
       console.error('Error creating property', error);

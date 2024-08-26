@@ -4,6 +4,7 @@ import Header from './Header';
 import bed from '../assets/images/bed.jpg';
 import kitchen from '../assets/images/kitchen.jpg';
 import palour from '../assets/images/palour.jpg';
+import smallHouse from '../assets/images/smallHouse.jpg';
 import vid from '../assets/images/vid.mp4'
 import { FaCalendarAlt, FaComments } from'react-icons/fa';
 import { GiFamilyHouse } from "react-icons/gi";
@@ -23,37 +24,37 @@ function Landpage()
 </h2>
 <div className="news-cards">
   <div className="news-card">
-    <img src={kitchen} alt="News 1" />
+    <img src={smallHouse} alt="News 1" />
     <div className="news-content">
-      <h3>Your next adventure starts here—reserve now!</h3>
-      <h4>70000XAF/Per Month</h4>
+      <h3>Your next adventure starts here—achete moi!</h3>
+      <h4>17000000 XAF</h4>
       <div className="news-meta">
         <span><FaCalendarAlt /> 20th August, 2024</span>
       </div>
-      <p>"Your sanctuary is just a booking away."
+      <p>"Your sanctuary is just HERE!!."
       </p>
-      <a href="book_now" className="read-more">Book Now &gt;</a>
+      <a href="buy_now" className="read-more">BUY NOW &gt;</a>
     </div>
   </div>
   <div className="news-card">
     <img src={bed} alt="News 2" />
     <div className="news-content">
       <h3>Your dream home awaits—book your stay today!</h3>
-      <h4>7000XAF/Per Day</h4>
+      <h4>7000 XAF/Per Day</h4>
       <div className="news-meta">
         <span><FaCalendarAlt /> 20th July, 2024</span>
       </div>
       <p>
-      "Discover paradise—rent your escape now."
+      "Discover paradise—Book your escape now."
       </p>
-      <a href="book_now" className="read-more">Book Now &gt;</a>
+      <a href="book_now" className="read-more">BOOK NOW &gt;</a>
     </div>
   </div>
   <div className="news-card">
     <img src={palour} alt="News 3" />
     <div className="news-content">
-      <h3>Find your haven—book today and relax tomorrow.</h3>
-      <h4>15000XAF/Per month</h4>
+      <h3>Find your haven—rent today and relax tomorrow.</h3>
+      <h4>150000XAF/Per month</h4>
       <div className="news-meta">
         <span><FaCalendarAlt /> 20th May, 2024</span>
        
@@ -61,7 +62,7 @@ function Landpage()
       <p>
       "Make memories in style—rent your dream space."
       </p>
-      <a href="book_now" className="read-more">Book Now &gt;</a>
+      <a href="rent_now" className="read-more">RENT NOW &gt;</a>
     </div>
   </div>
 </div>

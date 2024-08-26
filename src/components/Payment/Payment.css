@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@400;700&display=swap');
-.BookingContainer{
+.PaymentContainer{
     background-image: url('../../assets/images/Booking.jpg');
     background-position: center;
     background-size: cover; 
     height: 500px;
     width: 100%;
+    color: #fff;
+    display: block;
+    font-family:'Cormorant Garamond', serif ;
+    margin-left: 20px;
+    margin-bottom: 10px;
 
 }
-.BookingForm {
+.PaymentForm {
   width: 30%; 
   height:300px;
   margin: 50px auto;
@@ -25,6 +30,7 @@
 
 /* Styling the input fields */
 input[type="text"],
+input[type=""]
 input[type="date"] {
     width: 60%;
   padding: 5px;
@@ -77,9 +83,16 @@ input[type="text"]:focus,
 input[type="date"]:focus {
     box-shadow: 0 0 5px rgba(0, 126, 255, 0.5);
 }
-.BookTitle{
+.PayTitle{
     font-family:'Cormorant Garamond', serif  ;
     color: antiquewhite;
+}
+.labels{
+    display: block;
+    font-family:'Cormorant Garamond', serif ;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: whitesmoke;
 }
 /* Responsive form - scales nicely on small screens */
 @media (max-width: 480px) {

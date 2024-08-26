@@ -10,8 +10,11 @@ import Signup from './components/SignupForm';
 import Company from './components/About/Company';
 import BookingForm from './components/Booking/BookingForm';
 import UserDashboard from './components/Dashboards/userDashboard';
+import AdminDashboard from './components/Dashboards/AdminDashboard';
+import PaymentForm from './components/Payment/PaymentForm';
 import './App.css';
 import './Responsive.css';
+import PropertyMap from './components/Properties/PropertyMap';
 
 
 const App = () => {
@@ -28,9 +31,12 @@ const App = () => {
         <Route path="/" element={<LandPage />} />
         <Route path="/book_now" element={<BookingForm />} />
         <Route path="/UserDashboard" element={<UserDashboard />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route path="/rent_now" element={<PaymentForm />} />
 
       </Routes>
       <Footer/>
+      {/* <PropertyMap/> */}
       
     </div>
   );

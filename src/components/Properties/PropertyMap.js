@@ -9,7 +9,7 @@ const PropertyMap = ({ properties }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {properties.map(property => (
+      {/* {properties.map(property => (
         <Marker key={property.id} position={property.location}>
           <Popup>
             <strong>{property.title}</strong><br />
@@ -17,7 +17,7 @@ const PropertyMap = ({ properties }) => {
             <a href={`/properties/${property.id}`}>View Details</a>
           </Popup>
         </Marker>
-      ))}
+      ))} */}
     </MapContainer>
   );
 };
