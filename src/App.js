@@ -12,9 +12,13 @@ import BookingForm from './components/Booking/BookingForm';
 import UserDashboard from './components/Dashboards/userDashboard';
 import AdminDashboard from './components/Dashboards/AdminDashboard';
 import PaymentForm from './components/Payment/PaymentForm';
+import ReadMore from './components/read_more';
+
+
 import './App.css';
 import './Responsive.css';
 import PropertyMap from './components/Properties/PropertyMap';
+import Agent from './components/Agent';
 
 
 const App = () => {
@@ -33,9 +37,13 @@ const App = () => {
         <Route path="/UserDashboard" element={<UserDashboard />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="/rent_now" element={<PaymentForm />} />
+        <Route path="/read_more" element={<ReadMore />} />
+        <Route path="/agent" element={<Agent />} />
+    
 
       </Routes>
       <Footer/>
+      
       {/* <PropertyMap/> */}
       
     </div>

@@ -14,17 +14,48 @@
       width:25%;
       height:250px;
      } */
-     .description {
-      background-color: #f5f5f5;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin: 1rem;
-      overflow: hidden;
-      width: 300px;
-      transition: transform 0.5s ease;
-    }
-    .img-description  {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+     .contact-us {
+      font-family: Arial, sans-serif;
+      color: #333;
+      padding: 20px;
+      text-align: center;
+  }
+  
+  /* Header image section */
+  .header-image {
+      /* background-image: url('/'); Placeholder for your image */
+      background-size: cover;
+      background-position: center;
+      height: 300px; /* Adjust height as needed */
+      margin-bottom: 20px;
+  }
+  
+  /* Styling for contact info text */
+  .contact-info h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+  }
+  
+  .contact-info p {
+      font-size: 1rem;
+      line-height: 1.6;
+  }
+  
+  .contact-info a {
+      color: #0074e4; /* Zillow's signature blue color */
+      text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+      text-decoration: underline;
+  }
+  
+  /* Contact details */
+  .contact-info h2 {
+      font-size: 1.5rem;
+      margin-top: 20px;
+  }
+  
+  .contact-info strong {
+      font-weight: bold;
+  }
