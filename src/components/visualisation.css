@@ -1,12 +1,141 @@
-.container{
-  width:100%;
-  height:1800px;
-  font-weight: bold;
-  font-size: large;
-  background-color: aquamarine;
-
+/* /src/components/PropertyPage.css */
+.property-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
-  h1 {
-    color: #8B4513; /* SaddleBrown for wood aesthetic */
+
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.search-bar input, .search-bar button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  flex: 1 1 calc(25% - 10px); /* Make each input take up 1/4 of the width */
+}
+
+.offers {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow offers to wrap on smaller screens */
+  width: 100%;
+}
+
+.offer-banner {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1 1 calc(50% - 20px); /* Make each offer take up 50% width */
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.map-container {
+  border: 1px solid #ccc;
+  height: 400px;
+  width: 100%;
+}
+
+.property-type {
+  margin-bottom: 20px;
+}
+
+.property-type-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* Wrap property types on smaller screens */
+}
+
+.property-type-item {
+  text-align: center;
+  flex: 1 1 calc(25% - 10px); /* Each type takes 25% width */
+}
+
+.property-type-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.property-list {
+  padding: 20px;
+}
+
+.property-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Wrap properties on smaller screens */
+}
+
+.property-item {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1 1 calc(33% - 20px); /* Each property takes up 33% width */
+}
+
+.property-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.view-3d {
+  padding: 5px;
+  background-color: #0071c2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr; 
+
+  .map-container {
+    height: 250px;
   }
-  
+}
+
+  .search-bar input, .search-bar button {
+    flex: 1 1 calc(50% - 10px); /* Make each input take 50% of the width on smaller screens */
+  }
+
+  .offer-banner {
+    flex: 1 1 100%; /* Full width on smaller screens */
+  }
+
+  .property-item {
+    flex: 1 1 calc(50% - 20px); /* Each property takes up 50% width */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar input, .search-bar button {
+    flex: 1 1 100%; /* Full width for each input on extra small screens */
+  }
+
+  .property-item {
+    flex: 1 1 100%; /* Full width for each property */
+  }
+
+  .map-container {
+    height: 200px; /* Smaller height for map on extra small screens */
+  }
+}

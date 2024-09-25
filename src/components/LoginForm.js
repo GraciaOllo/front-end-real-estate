@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { FaSignInAlt } from "react-icons/fa"; // Importing login icon
+import { Toast, ToastContainer } from "react-bootstrap";
 
 const LoginForm = () => {
-  const [role, setRole] = useState("tenant");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("success"); // "success" or "error"
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,7 +23,7 @@ const LoginForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: name,
+          email: email,
           password,
         }),
       });
@@ -31,28 +34,38 @@ const LoginForm = () => {
 
       const data = await response.text();
       console.log("Response data:", data);
-      alert("Login successful!");
+      // Set success toast
+      setToastType("success");
+      setToastMessage("Login successful");
+      setShowToast(true);
+      navigate("/"); // Redirect to home or dashboard after successful login
     } catch (error) {
+      // Set error toast
+      setToastType("error");
+      setToastMessage("Login failed");
+      setShowToast(true);
       console.error("Error:", error);
     }
   };
 
   return (
     <div>
-    {/* <ToastContainer />g */}
+      <ToastContainer >
+        <Toast
+          onClose={() => setShowToast(false)}
+          show={showToast}
+          delay={3000}
+          autohide
+          bg={toastType === "success" ? "success" : "danger"} // Set background color based on type
+        >
+          <Toast.Body>{toastMessage}</Toast.Body>
+        </Toast>
+      </ToastContainer>
       <div align="center" className="form-container">
         <div className="login-form">
           <form onSubmit={handleSubmit}>
             <h2>Login</h2>
-            <label>
-              <b>Name: </b>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </label>
+            
 
             <label>
               <b>Email: </b>
