@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState ,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { FaSignInAlt } from "react-icons/fa"; // Importing login icon
 import { Toast, ToastContainer } from "react-bootstrap";
+import AuthContext from './Context/AuthContext.js'
 
 const LoginForm = () => {
 
@@ -12,12 +13,15 @@ const LoginForm = () => {
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState("success"); // "success" or "error"
   const navigate = useNavigate();
+  const {user ,setUser} = useContext(AuthContext)
+
+// console.log(user)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Simple authentication check
     try {
-      const response = await fetch("http://localhost:8086/api/auth/login", {
+      const response = await fetch("http://localhost:8087/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,6 +39,7 @@ const LoginForm = () => {
       const data = await response.text();
       console.log("Response data:", data);
       // Set success toast
+      setUser(data)
       setToastType("success");
       setToastMessage("Login successful");
       setShowToast(true);

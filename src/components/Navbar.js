@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBuilding, faSignIn, faUser } from '@fortawesome/free-solid-svg-icons';
+import AuthContext from './Context/AuthContext.js'
 
 const Navbar = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const {user} = useContext(AuthContext)
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
+
+console.log(user)
 
   return (
     <nav className="navbar">
@@ -28,9 +32,13 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faUser} /> signup
         </Link>
 
-        <Link to="/Login" className="navbar-link">
+       { user == null ?  <Link to="/Login" className="navbar-link">
           <FontAwesomeIcon icon={faSignIn} /> Login
-        </Link>
+        </Link> : 
+        <Link to="/logout" className="navbar-link">
+        {/* <FontAwesomeIcon icon={faSignOut} /> */}
+         Log-out
+        </Link>}
 
 
         {/* <div className="navbar-link" onClick={toggleDropdown}>

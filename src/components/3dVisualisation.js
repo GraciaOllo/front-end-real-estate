@@ -90,7 +90,6 @@ const PropertyType = () => {
   );
 };
 
-// Map with Markers Component (focused on Yaoundé)
 const MapWithMarkers = () => {
   return (
     <div className="map-container">
@@ -106,19 +105,30 @@ const MapWithMarkers = () => {
   );
 };
 
+// Property Card Component (new component for better code organization)
+const PropertyCard = ({ property }) => {
+  return (
+    <div className="property-card">
+      <img src={property.imageUrl || "/images/property.jpg"} alt={property.name} />
+      <div className="property-card-details">
+        <h4>{property.name}</h4>
+        <p>{property.location}</p>
+        <p>{property.distance} away</p>
+        <p>Price: {property.price}</p>
+        <button className="view-3d">3D View</button>
+      </div>
+    </div>
+  );
+};
+
 // Property List Component
 const PropertyList = ({ filteredProperties }) => {
   return (
     <div className="property-list">
-      <h2>Explore Cameroon</h2>
+      <h2>Explore Properties</h2>
       <div className="property-grid">
         {filteredProperties.map((property) => (
-          <div key={property.name} className="property-item">
-            <img src="/images/property.jpg" alt={property.name} />
-            <h4>{property.name}</h4>
-            <p>{property.distance}</p>
-            <button className="view-3d">3D View</button>
-          </div>
+          <PropertyCard key={property.id} property={property} />
         ))}
       </div>
     </div>
@@ -130,11 +140,10 @@ const PropertyPage = () => {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
 
-  // Fetch all properties from the backend when the component mounts
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch("http://localhost:8086/api/properties");
+        const response = await fetch("http://localhost:8087/api/properties/getAllProperties");
         if (!response.ok) {
           throw new Error("Failed to fetch properties");
         }

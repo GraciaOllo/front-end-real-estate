@@ -1,4 +1,3 @@
-/* /src/components/PropertyPage.css */
 .property-page {
   display: flex;
   flex-direction: column;
@@ -14,17 +13,17 @@
   width: 100%;
 }
 
-.search-bar input, .search-bar button {
+.search-bar input, .search-bar select, .search-bar button {
   padding: 10px;
   border: 1px solid #ccc;
-  flex: 1 1 calc(25% - 10px); /* Make each input take up 1/4 of the width */
+  flex: 1 1 calc(20% - 10px); /* Adjust width to accommodate select dropdown */
 }
 
 .offers {
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* Allow offers to wrap on smaller screens */
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -33,7 +32,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  flex: 1 1 calc(50% - 20px); /* Make each offer take up 50% width */
+  flex: 1 1 calc(50% - 20px);
 }
 
 .content {
@@ -56,12 +55,12 @@
 .property-type-list {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap; /* Wrap property types on smaller screens */
+  flex-wrap: wrap;
 }
 
 .property-type-item {
   text-align: center;
-  flex: 1 1 calc(25% - 10px); /* Each type takes 25% width */
+  flex: 1 1 calc(25% - 10px);
 }
 
 .property-type-item img {
@@ -77,21 +76,27 @@
 .property-grid {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap; /* Wrap properties on smaller screens */
+  flex-wrap: wrap;
 }
 
-.property-item {
+.property-card {
   background-color: #f8f8f8;
   padding: 10px;
   border-radius: 8px;
   text-align: center;
-  flex: 1 1 calc(33% - 20px); /* Each property takes up 33% width */
+  flex: 1 1 calc(33% - 20px); /* Each card takes 33% width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for card effect */
 }
 
-.property-item img {
+.property-card img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
+  border-radius: 8px;
+}
+
+.property-card-details {
+  margin-top: 10px;
 }
 
 .view-3d {
@@ -101,41 +106,55 @@
   border: none;
   border-radius: 5px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
+.view-3d:hover {
+  background-color: #005f99;
+}
+
+@media (max-width: 1024px) {
+  .property-card {
+    flex: 1 1 calc(50% - 20px); /* Each card takes 50% width on medium screens */
+  }
+
+  .content {
+    grid-template-columns: 250px 1fr; /* Adjust map size on medium screens */
+  }
+}
 
 @media (max-width: 768px) {
   .content {
-    grid-template-columns: 1fr; 
-
-  .map-container {
-    height: 250px;
+    grid-template-columns: 1fr;
   }
-}
 
-  .search-bar input, .search-bar button {
-    flex: 1 1 calc(50% - 10px); /* Make each input take 50% of the width on smaller screens */
+  .search-bar input, .search-bar select, .search-bar button {
+    flex: 1 1 calc(50% - 10px); /* Adjust inputs to 50% width on smaller screens */
   }
 
   .offer-banner {
-    flex: 1 1 100%; /* Full width on smaller screens */
+    flex: 1 1 100%; /* Full width for offers */
   }
 
-  .property-item {
-    flex: 1 1 calc(50% - 20px); /* Each property takes up 50% width */
+  .property-card {
+    flex: 1 1 calc(50% - 20px); /* Each card takes 50% width on smaller screens */
+  }
+
+  .map-container {
+    height: 300px; /* Adjust map size */
   }
 }
 
 @media (max-width: 480px) {
-  .search-bar input, .search-bar button {
+  .search-bar input, .search-bar select, .search-bar button {
     flex: 1 1 100%; /* Full width for each input on extra small screens */
   }
 
-  .property-item {
-    flex: 1 1 100%; /* Full width for each property */
+  .property-card {
+    flex: 1 1 100%; /* Full width for each card on extra small screens */
   }
 
   .map-container {
-    height: 200px; /* Smaller height for map on extra small screens */
+    height: 200px; /* Smaller map for mobile devices */
   }
 }
