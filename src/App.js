@@ -19,6 +19,7 @@ import './App.css';
 import './Responsive.css';
 import PropertyMap from './components/Properties/PropertyMap';
 import Agent from './components/Agent';
+import DView from './components/DView';
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/rent_now" element={<PaymentForm />} />
         <Route path="/read_more" element={<ReadMore />} />
         <Route path="/agent" element={<Agent />} />
+        <Route path="/3D" element={<DView />} />
     
 
       </Routes>

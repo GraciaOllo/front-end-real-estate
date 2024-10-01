@@ -11,11 +11,11 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
-  const [toastType, setToastType] = useState("success"); // "success" or "error"
+  const [toastType, setToastType] = useState("success"); 
   const navigate = useNavigate();
   const {user ,setUser} = useContext(AuthContext)
 
-// console.log(user)
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ const LoginForm = () => {
       setToastType("success");
       setToastMessage("Login successful");
       setShowToast(true);
-      navigate("/"); // Redirect to home or dashboard after successful login
+      navigate("/AdminDashboard"); // Redirect to home or dashboard after successful login
     } catch (error) {
       // Set error toast
       setToastType("error");

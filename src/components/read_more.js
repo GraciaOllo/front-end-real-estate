@@ -1,27 +1,27 @@
 import React from 'react';
 import './read_more.css';
-import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
+import { useNavigate } from 'react-router-dom'; 
 
 const ReadMore = () => {
-  const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  // Function to handle navigation to the Agent page
-  const goToAgentPage = () => {
-    navigate('/agent'); // This assumes your "Agent" page is mapped to the "/agent" route
+  const navigate = useNavigate(); 
+
+const goToAgentPage = () => {
+    navigate('/agent'); 
   };
 
   return (
     <div className="sell-page">
-      {/* Header Section */}
+     
       <header className="sell-header">
-        <div className="header-image"></div> {/* Placeholder for the header image */}
+        <div className="header-image"></div> 
         <div className="header-content">
           <h1>Sell your home with confidence</h1>
           <p>TSF Consult is making it simpler to sell your home and move forward.</p>
         </div>
       </header>
 
-      {/* Partner Agent Section */}
+     
       <section className="sell-partner-agent">
         <h2>Sell with a TSF Consult partner agent or get a cash offer</h2>
         <p>
@@ -46,7 +46,7 @@ const ReadMore = () => {
         </div>
       </section>
 
-      {/* Traditional Agent Section */}
+    
       <section className="sell-traditional-agent">
         <h2>Sell traditionally with an agent</h2>
         <p>
@@ -55,7 +55,7 @@ const ReadMore = () => {
         </p>
 
         <div className="agent-options">
-          {/* Button with navigation to the Agent page */}
+        
           <button className="cta-button" onClick={goToAgentPage}>Find an agent</button>
           <button className="cta-button">Learn more about TSF Consult's agent</button>
         </div>

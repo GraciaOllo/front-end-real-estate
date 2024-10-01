@@ -1,5 +1,6 @@
 // /src/components/PropertyPage.js
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./visualisation.css";
 
 // SearchBar Component
@@ -53,7 +54,6 @@ const SearchBar = ({ onSearch }) => {
   );
 };
 
-// Offers Component
 const Offers = () => {
   return (
     <div className="offers">
@@ -71,7 +71,6 @@ const Offers = () => {
   );
 };
 
-// Property Type Component
 const PropertyType = () => {
   const propertyTypes = ["Hotels", "Apartments", "Resorts", "Villas"];
 
@@ -105,30 +104,32 @@ const MapWithMarkers = () => {
   );
 };
 
-// Property Card Component (new component for better code organization)
-const PropertyCard = ({ property }) => {
+// Property Card Component (updated to receive goTo3dView as a prop)
+const PropertyCard = ({ property, goTo3dView }) => {
   return (
     <div className="property-card">
       <img src={property.imageUrl || "/images/property.jpg"} alt={property.name} />
       <div className="property-card-details">
-        <h4>{property.name}</h4>
+        <h4>{property.type}</h4>
         <p>{property.location}</p>
         <p>{property.distance} away</p>
         <p>Price: {property.price}</p>
-        <button className="view-3d">3D View</button>
+        <button onClick={goTo3dView} className="view-3d"> 3D View</button>
+        <button className="view-3d"> rent </button>
+        <button className="view-3d"> book </button>
       </div>
     </div>
   );
 };
 
 // Property List Component
-const PropertyList = ({ filteredProperties }) => {
+const PropertyList = ({ filteredProperties, goTo3dView }) => {
   return (
     <div className="property-list">
       <h2>Explore Properties</h2>
       <div className="property-grid">
         {filteredProperties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
+          <PropertyCard key={property.id} property={property} goTo3dView={goTo3dView} />
         ))}
       </div>
     </div>
@@ -139,6 +140,11 @@ const PropertyList = ({ filteredProperties }) => {
 const PropertyPage = () => {
   const [properties, setProperties] = useState([]);
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const navigate = useNavigate();
+
+  const goTo3dView = () => {
+    navigate('/3D');
+  };
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -177,7 +183,7 @@ const PropertyPage = () => {
         <MapWithMarkers />
         <div className="right-content">
           <PropertyType />
-          <PropertyList filteredProperties={filteredProperties} />
+          <PropertyList filteredProperties={filteredProperties} goTo3dView={goTo3dView} />
         </div>
       </div>
     </div>

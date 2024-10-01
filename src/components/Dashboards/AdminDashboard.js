@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ApiService from '../../controllers/ApiService';
 import { Bar, Line } from 'react-chartjs-2';
 import { BsThreeDots } from 'react-icons/bs';
 import { FaHome, FaBuilding, FaUsers, FaCog } from 'react-icons/fa';
@@ -19,7 +18,6 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import PropertyMap from '../Properties/PropertyMap';
 
 // Register required components
 ChartJS.register(
@@ -32,6 +30,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+const API_BASE_URL = 'https://your-api-url.com'; // Replace with your actual API base URL
 
 const AdminDashboard = () => {
   const [propertyData, setPropertyData] = useState([]);
@@ -46,11 +46,16 @@ const AdminDashboard = () => {
   });
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
+  // Fetch properties and bookings from your API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const properties = await ApiService.getProperties();
-        const bookings = await ApiService.getBookings();
+        const propertiesResponse = await fetch(`${API_BASE_URL}/properties`);
+        const properties = await propertiesResponse.json();
+
+        const bookingsResponse = await fetch(`${API_BASE_URL}/bookings`);
+        const bookings = await bookingsResponse.json();
+
         setPropertyData(properties);
         setBookingData(bookings);
       } catch (error) {
@@ -79,8 +84,24 @@ const AdminDashboard = () => {
 
   const handleAddProperty = async () => {
     try {
-      // Save the property locally to mimic a database add.
-      setPropertyData([...propertyData, newProperty]);
+      const formData = new FormData();
+      formData.append('name', newProperty.name);
+      formData.append('price', newProperty.price);
+      formData.append('location', newProperty.location);
+      formData.append('description', newProperty.description);
+      formData.append('image', newProperty.image);
+
+      const response = await fetch(`http://localhost:8087/api/properties/create-property`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const addedProperty = await response.json();
+        setPropertyData([...propertyData, addedProperty]);
+      } else {
+        console.error('Error adding property');
+      }
 
       // Reset the newProperty state after addition
       setNewProperty({
@@ -97,14 +118,27 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleDeleteProperty = (index) => {
-    const updatedProperties = propertyData.filter((_, i) => i !== index);
-    setPropertyData(updatedProperties);
+  const handleDeleteProperty = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8087/api/properties/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        const updatedProperties = propertyData.filter((property) => property.id !== id);
+        setPropertyData(updatedProperties);
+      } else {
+        console.error('Error deleting property');
+      }
+    } catch (error) {
+      console.error('Error deleting property', error);
+    }
   };
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
   };
+
   const propertyChartData = {
     labels: propertyData.map((property) => property.name),
     datasets: [
@@ -136,7 +170,7 @@ const AdminDashboard = () => {
       <div className="sidebar-container">
         <div className="sidebar-header">
           <button className="collapse-button" onClick={toggleSidebar}>
-            <BsThreeDots /> {/* Replaced with three dots */}
+            <BsThreeDots />
           </button>
         </div>
         <div className="nav-item">
@@ -165,7 +199,7 @@ const AdminDashboard = () => {
         <div className="header-container">
           <h1>Welcome, Gracia!!!</h1>
           <div className="user-profile">
-            <img src={Admin}/>
+            <img src={Admin} alt="Admin" />
             <span>Admin</span>
           </div>
         </div>
@@ -174,11 +208,7 @@ const AdminDashboard = () => {
           <div className="card" onClick={handleShowAddPropertyModal}>
             <h3>Add Property</h3>
             <p>Click to add a new property.</p>
-            
           </div>
-          
-          
-          
           <div className="card">
             <h3>Total Properties</h3>
             <p>{propertyData.length} Properties</p>
@@ -194,20 +224,22 @@ const AdminDashboard = () => {
         </div>
 
         <div className="property-list">
-          {propertyData.map((property, index) => (
-            <div key={index} className="property-card">
+          {propertyData.map((property) => (
+            <div key={property.id} className="property-card">
               <img src={property.image} alt={property.name} className="property-image" />
               <div className="property-details">
                 <h4>{property.name}</h4>
                 <p>{property.location}</p>
                 <p>${property.price}</p>
                 <p>{property.description}</p>
+                <Button variant="danger" onClick={() => handleDeleteProperty(property.id)}>
+                  Delete
+                </Button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Chart Section remains unchanged */}
         <div className="charts-container">
           <div className="chart-item">
             <h3>Property Prices</h3>
@@ -218,8 +250,6 @@ const AdminDashboard = () => {
             <Line data={bookingChartData} />
           </div>
         </div>
-
-
       </div>
 
       <Modal show={showAddPropertyModal} onHide={handleCloseAddPropertyModal}>
@@ -252,7 +282,7 @@ const AdminDashboard = () => {
               <Form.Label>Location</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter property location"
+                placeholder="Enter location"
                 name="location"
                 value={newProperty.location}
                 onChange={handleInputChange}
@@ -263,20 +293,15 @@ const AdminDashboard = () => {
               <Form.Control
                 as="textarea"
                 rows={3}
-                placeholder="Enter property description"
+                placeholder="Enter description"
                 name="description"
                 value={newProperty.description}
                 onChange={handleInputChange}
               />
             </Form.Group>
             <Form.Group controlId="formPropertyImage">
-              <Form.Label>Property Image</Form.Label>
-              <Form.Control
-                type="file"
-                name="image"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+              <Form.Label>Image</Form.Label>
+              <Form.Control type="file" onChange={handleImageChange} />
             </Form.Group>
           </Form>
         </Modal.Body>
